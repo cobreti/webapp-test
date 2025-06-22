@@ -8,9 +8,9 @@
       "name": ".NET Core Launch (web)",
       "type": "coreclr",
       "request": "launch",
-      "program": "${workspaceFolder}/webapptest/bin/Debug/net9.0/webapptest.dll",
+      "program": "${workspaceFolder}/webappsvr/bin/Debug/net9.0/webapptest.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/webapptest",
+      "cwd": "${workspaceFolder}/webappsvr",
       "stopAtEntry": false,
       "serverReadyAction": {
         "action": "openExternally",

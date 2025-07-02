@@ -34,8 +34,23 @@ jobs:
           npm ci
           
       - name: Build Angular app
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID_02AE53CF53F84FC3B720D4BC8A76731B }}
+          AZURE_TENANT_ID: ${{ secrets.AZUREAPPSERVICE_TENANTID_31D97D8826CA4B4599473EC54BC6B1B7 }}
         run: |
           cd webappclient
+          
+          # Replace environment variables in production environment file using node
+          node -e "
+            const fs = require('fs');
+            const path = './src/environments/environment.prod.ts';
+            let content = fs.readFileSync(path, 'utf8');
+            content = content.replace(/{{AZURE_CLIENT_ID}}/g, process.env.AZURE_CLIENT_ID);
+            content = content.replace(/{{AZURE_TENANT_ID}}/g, process.env.AZURE_TENANT_ID);
+            fs.writeFileSync(path, content);
+            console.log('Environment file updated with Azure AD credentials');
+          "
+          
           npm run build:dotnet
 
       - name: Build with dotnet

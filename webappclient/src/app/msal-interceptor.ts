@@ -4,12 +4,15 @@ import { MsalService } from '@azure/msal-angular';
 import { AccountInfo } from '@azure/msal-browser';
 import { Observable, from, mergeMap, switchMap } from 'rxjs';
 import { apiRequest } from './auth-config';
+import { environment } from '../environments/environment';
 
 export const msalInterceptor: HttpInterceptorFn = (req, next) => {
   const msalService = inject(MsalService);
 
   // Skip interceptor for certain URLs
-  const isApiRequest = req.url.includes('/api/') || req.url.includes('graph.microsoft.com');
+  const isApiRequest = req.url.includes(environment.apiBaseUrl) ||
+                       req.url.includes('/api/') ||
+                       req.url.includes('graph.microsoft.com');
   if (!isApiRequest) {
     return next(req);
   }

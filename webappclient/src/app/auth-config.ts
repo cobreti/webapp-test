@@ -1,14 +1,15 @@
 import { LogLevel, Configuration, BrowserCacheLocation } from '@azure/msal-browser';
+import { environment } from '../environments/environment';
 
 /**
  * Configuration for MSAL authentication
  */
 export const msalConfig: Configuration = {
   auth: {
-    clientId: '2d5492f9-e028-4915-b470-9dcee2d85e9d', // Replace with your Azure AD application client ID
-    authority: 'https://login.microsoftonline.com/19e74276-cc08-479a-a8e3-9e7ac8a6f03c', // Replace with your tenant ID
-    redirectUri: window.location.origin, // Will use the current URL as the redirect URI
-    postLogoutRedirectUri: window.location.origin,
+    clientId: environment.azure.clientId,
+    authority: `https://login.microsoftonline.com/${environment.azure.tenantId}`,
+    redirectUri: environment.azure.redirectUri,
+    postLogoutRedirectUri: environment.azure.postLogoutRedirectUri,
   },
   cache: {
     cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -51,5 +52,5 @@ export const loginRequest = {
  * API access scopes
  */
 export const apiRequest = {
-  scopes: ['api://YOUR_API_SCOPE/access_as_user'] // Replace with your API scope
+  scopes: [environment.apiScope]
 };

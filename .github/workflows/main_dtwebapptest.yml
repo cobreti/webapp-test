@@ -22,12 +22,31 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Angular dependencies
+        run: |
+          cd webappclient
+          npm ci
+          
+      - name: Build Angular app
+        run: |
+          cd webappclient
+          npm run build:dotnet
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: |
+          cd webappsvr
+          dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: |
+          cd webappsvr
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

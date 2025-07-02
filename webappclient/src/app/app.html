@@ -1,11 +1,24 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<header>
+  <div class="navbar">
+    <div class="navbar-brand">
+      <h1>{{title}}</h1>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/" class="nav-link">Home</a>
+      @if(isLoggedIn) {
+        <a routerLink="/profile" class="nav-link">Profile</a>
+      }
+    </div>
+  </div>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer>
+  <p>© 2025 - Angular .NET Core Web App</p>
+</footer>
 
 <style>
   :host {

@@ -7,12 +7,17 @@
     "start": "ng serve",
     "prebuild": "node update-env.js",
     "build": "ng build",
+    "prebuild:dotnet": "node update-env.js",
     "build:dotnet": "ng build && npm run copy:dist",
     "prebuilddev:dotnet": "node update-env.js",
     "builddev:dotnet": "ng build --configuration development && npm run copy:dist",
     "copy:dist": "rm -rf ../webappsvr/wwwroot/* && mkdir -p ../webappsvr/wwwroot && cp -r dist/webappclient/browser/* ../webappsvr/wwwroot/",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "update-env": "node update-env.js",
+    "reset-env": "node reset-env.js",
+    "prepare-commit": "npm run reset-env",
+    "prepare": "husky install 2>/dev/null || true"
   },
   "private": true,
   "dependencies": {
@@ -33,6 +38,7 @@
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
     "dotenv": "^17.0.1",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

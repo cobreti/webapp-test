@@ -2,6 +2,30 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.2.
 
+## Environment Configuration
+
+This project uses environment variables to secure sensitive information like Azure AD credentials. Here's how to set it up:
+
+1. Create a `.env` file in the project root (copy from `.env.example`)
+2. Add your Azure AD credentials:
+   ```
+   DEV_AZURE_CLIENT_ID=your-client-id
+   DEV_AZURE_TENANT_ID=your-tenant-id
+   ```
+
+### Managing Environment Files
+
+The project includes two special scripts to handle environment variables:
+
+- `npm run update-env` - Replaces placeholders in environment files with values from `.env`
+- `npm run reset-env` - Restores placeholders in environment files (run before committing)
+- `npm run prepare-commit` - Prepares code for commit by restoring placeholders
+
+These scripts run automatically when you use standard npm commands:
+- `npm start` - Automatically updates environment before starting the dev server
+- `npm run build` - Automatically updates environment before building
+- `npm run build:dotnet` - Updates environment before building for .NET deployment
+
 ## Development server
 
 To start a local development server, run:

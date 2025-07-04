@@ -5,7 +5,7 @@
     "prepare-commit": "npm run reset-env",
     "prepare": "husky install 2>/dev/null || true"
   },
-  "dependencies": {
+  "devDependencies": {
     "husky": "^9.1.7"
   }
 }

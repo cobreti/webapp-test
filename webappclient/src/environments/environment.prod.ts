@@ -6,7 +6,7 @@ export const environment = {
   azure: {
     clientId: clientId,
     tenantId: '{{AZURE_TENANT_ID}}', // Will be replaced during build
-    redirectUri: window.location.origin,
+    redirectUri: `${window.location.origin}/.auth/login/aad/callback`,
     postLogoutRedirectUri: window.location.origin,
   },
   apiBaseUrl: 'https://dtwebapptest.azurewebsites.net',

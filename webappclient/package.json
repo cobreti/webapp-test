@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "node update-env.js",
-    "start": "ng serve",
+    "start": "ng serve --port 4200",
     "prebuild": "node update-env.js",
     "build": "ng build",
     "prebuild:dotnet": "node update-env.js",

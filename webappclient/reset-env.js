@@ -27,6 +27,14 @@ function restorePlaceholders(filePath, isProduction) {
       `tenantId: '{{${prefix}AZURE_TENANT_ID}}'`
     );
 
+    // Make sure we don't modify the redirectUri format
+    if (content.includes('redirectUri:') && !content.includes('/.auth/login/aad/callback')) {
+      content = content.replace(
+        /redirectUri: window\.location\.origin/,
+        `redirectUri: \`\${window.location.origin}/.auth/login/aad/callback\``
+      );
+    }
+
     // Write the content back to the file
     fs.writeFileSync(filePath, content);
     console.log(`✓ Placeholders restored in ${path.basename(filePath)}`);

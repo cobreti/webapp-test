@@ -9,6 +9,6 @@ export const environment = {
     redirectUri: `${window.location.origin}/.auth/login/aad/callback`,
     postLogoutRedirectUri: window.location.origin,
   },
-  apiBaseUrl: 'https://localhost:7200',
+  apiBaseUrl: 'https://localhost:7201',
   apiScope: `api://${clientId}/access_as_user`
 };

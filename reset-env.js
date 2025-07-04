@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 // Path to environment files
-const devEnvPath = path.join(__dirname, 'src/environments/environment.ts');
-const prodEnvPath = path.join(__dirname, 'src/environments/environment.prod.ts');
+const devEnvPath = path.join(__dirname, 'webappclient/src/environments/environment.ts');
+const prodEnvPath = path.join(__dirname, 'webappclient/src/environments/environment.prod.ts');
+
+console.log('path : ', devEnvPath);
 
 // Function to restore placeholders in a file
 function restorePlaceholders(filePath, isProduction) {

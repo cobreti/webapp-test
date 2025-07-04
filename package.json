@@ -6,6 +6,9 @@
     "prepare": "husky install 2>/dev/null || true"
   },
   "devDependencies": {
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "dotenv": "^17.0.1"
+  },
+  "dependencies": {
   }
 }

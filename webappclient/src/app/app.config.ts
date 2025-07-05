@@ -8,6 +8,9 @@ import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
 import { msalConfig } from './auth-config';
 import { msalInterceptor } from './msal-interceptor';
 
+console.log('value1: ', msalConfig.auth.clientId);
+console.log('value2: ', msalConfig.auth.authority);
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),

@@ -8,7 +8,7 @@
     "prebuild": "node update-env.js",
     "build": "ng build",
     "prebuild:dotnet": "node update-env.js",
-    "build:dotnet": "ng build --configuration production && npm run copy:dist",
+    "build:dotnet": "ng build && npm run copy:dist",
     "prebuilddev:dotnet": "node update-env.js",
     "builddev:dotnet": "ng build --configuration development && npm run copy:dist",
     "copy:dist": "rm -rf ../webappsvr/wwwroot/* && mkdir -p ../webappsvr/wwwroot && cp -r dist/webappclient/browser/* ../webappsvr/wwwroot/",

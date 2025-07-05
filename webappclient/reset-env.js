@@ -5,6 +5,8 @@ const path = require('path');
 const devEnvPath = path.join(__dirname, 'src/environments/environment.ts');
 const prodEnvPath = path.join(__dirname, 'src/environments/environment.prod.ts');
 
+console.log('path : ', devEnvPath);
+
 // Function to restore placeholders in a file
 function restorePlaceholders(filePath, isProduction) {
   console.log(`Restoring placeholders in ${filePath}`);
@@ -26,6 +28,14 @@ function restorePlaceholders(filePath, isProduction) {
       /tenantId: ['"]([^'"]+)['"]/,
       `tenantId: '{{${prefix}AZURE_TENANT_ID}}'`
     );
+
+    // Make sure we don't modify the redirectUri format
+    if (content.includes('redirectUri:') && !content.includes('/.auth/login/aad/callback')) {
+      content = content.replace(
+        /redirectUri: window\.location\.origin/,
+        `redirectUri: \`\${window.location.origin}/.auth/login/aad/callback\``
+      );
+    }
 
     // Write the content back to the file
     fs.writeFileSync(filePath, content);

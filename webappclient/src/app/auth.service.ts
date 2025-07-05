@@ -59,6 +59,41 @@ export class AuthService {
     return this.getAccount() !== null;
   }
 
+  /**
+   * Handle Azure AD App Service callback
+   * This method can process tokens from the /.auth/login/aad/callback route
+   * @returns Observable<boolean> indicating success or failure
+   */
+  // public handleCallback(): Observable<boolean> {
+  //   return new Observable<boolean>(observer => {
+  //     // Check if we have a valid account after the redirect
+  //     const account = this.getAccount();
+
+  //     if (account) {
+  //       // Success - we have an account
+  //       observer.next(true);
+  //       observer.complete();
+  //     } else {
+  //       // Try to handle the callback directly
+  //       this.msalService.handleRedirectObservable().subscribe({
+  //         next: (result: AuthenticationResult | null) => {
+  //           if (result) {
+  //             observer.next(true);
+  //           } else {
+  //             observer.next(false);
+  //           }
+  //           observer.complete();
+  //         },
+  //         error: (error) => {
+  //           console.error('Error handling redirect', error);
+  //           observer.next(false);
+  //           observer.complete();
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
   public getUserProfile(): Observable<any> {
     const account = this.getAccount();
     if (!account) {

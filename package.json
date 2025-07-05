@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "prepare-commit": "npm --prefix ./webappclient run reset-env",
+    "prepare": "husky install 2>/dev/null || true"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "dotenv": "^17.0.1"
+  },
+  "dependencies": {
+  }
+}

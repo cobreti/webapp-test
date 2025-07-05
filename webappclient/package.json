@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prestart": "node update-env.js",
-    "start": "ng serve",
+    "start": "ng serve --port 4200",
     "prebuild": "node update-env.js",
     "build": "ng build",
     "prebuild:dotnet": "node update-env.js",
@@ -16,7 +16,6 @@
     "test": "ng test",
     "update-env": "node update-env.js",
     "reset-env": "node reset-env.js",
-    "prepare-commit": "npm run reset-env",
     "prepare": "husky install 2>/dev/null || true"
   },
   "private": true,
@@ -38,7 +37,6 @@
     "@angular/compiler-cli": "^20.0.0",
     "@types/jasmine": "~5.1.0",
     "dotenv": "^17.0.1",
-    "husky": "^9.1.7",
     "jasmine-core": "~5.7.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

@@ -6,9 +6,9 @@ export const environment = {
   azure: {
     clientId: clientId,
     tenantId: '{{DEV_AZURE_TENANT_ID}}',
-    redirectUri: window.location.origin,
+    redirectUri: `${window.location.origin}/.auth/login/aad/callback`,
     postLogoutRedirectUri: window.location.origin,
   },
-  apiBaseUrl: 'https://localhost:7108',
+  apiBaseUrl: 'https://localhost:7201',
   apiScope: `api://${clientId}/access_as_user`
 };

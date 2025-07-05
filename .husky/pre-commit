@@ -1,2 +1,2 @@
 # Run the reset-env script to ensure placeholders are restored before committing
-npm run reset-env
+npm --prefix ./webappclient run reset-env

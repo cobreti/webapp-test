@@ -3,7 +3,7 @@ const path = require('path');
 require('dotenv').config();
 
 // Get the environment file path
-const environmentFilePath = path.join(__dirname, 'webappclient/src/environments/environment.ts');
+const environmentFilePath = path.join(__dirname, 'src/environments/environment.ts');
 
 // Read the file
 let content = fs.readFileSync(environmentFilePath, 'utf8');

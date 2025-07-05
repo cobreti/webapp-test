@@ -1,7 +1,5 @@
 {
   "scripts": {
-    "update-env": "node update-env.js",
-    "reset-env": "node reset-env.js",
     "prepare-commit": "npm --prefix ./webappclient run reset-env",
     "prepare": "husky install 2>/dev/null || true"
   },

@@ -22,12 +22,46 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.0'
+          
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install Angular dependencies
+        run: |
+          cd webappclient
+          npm ci
+          
+      - name: Build Angular app
+        env:
+          AZURE_CLIENT_ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C3EAE5E89D1A4DDEA32E7E664AC2FD46 }}
+          AZURE_TENANT_ID: ${{ secrets.AZUREAPPSERVICE_TENANTID_76BC9A9C2DD240319BB45A912B13F8D6 }}
+        run: |
+          cd webappclient
+          
+          # Replace environment variables in production environment file using node
+          node -e "
+            const fs = require('fs');
+            const path = './src/environments/environment.prod.ts';
+            let content = fs.readFileSync(path, 'utf8');
+            content = content.replace(/{{AZURE_CLIENT_ID}}/g, process.env.AZURE_CLIENT_ID);
+            content = content.replace(/{{AZURE_TENANT_ID}}/g, process.env.AZURE_TENANT_ID);
+            fs.writeFileSync(path, content);
+            console.log('Environment file updated with Azure AD credentials');
+          "
+          
+          npm run build:dotnet
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: |
+          cd webappsvr
+          dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: |
+          cd webappsvr
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4

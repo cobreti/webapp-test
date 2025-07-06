@@ -184,6 +184,14 @@
 </style>
 
 <main class="main">
+      <button *ngIf="!isLoggedIn" (click)="login()" class="login-button">
+        Sign in with Microsoft
+      </button>
+      <div *ngIf="isLoggedIn" class="user-info">
+        <p>Welcome</p>
+        <button (click)="logout()" class="logout-button">Sign out</button>
+      </div>
+
   <div class="content">
     <div class="left-side">
       <svg
@@ -328,6 +336,7 @@
       </div>
     </div>
   </div>
+
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

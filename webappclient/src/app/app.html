@@ -184,10 +184,10 @@
 </style>
 
 <main class="main">
-      <button *ngIf="!isLoggedIn" (click)="login()" class="login-button">
+      <button *ngIf="!loginDisplay" (click)="login()" class="login-button">
         Sign in with Microsoft
       </button>
-      <div *ngIf="isLoggedIn" class="user-info">
+      <div *ngIf="loginDisplay" class="user-info">
         <p>Welcome</p>
         <button (click)="logout()" class="logout-button">Sign out</button>
       </div>

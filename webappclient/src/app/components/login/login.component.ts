@@ -72,26 +72,11 @@ export class LoginComponent implements OnInit {
   private authService = inject(AuthService);
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    if (this.isLoggedIn) {
-      const account = this.authService.getAccount();
-      this.userName = account?.name || 'User';
-    }
-
-    this.authService.authChanged$.subscribe((isLoggedIn: boolean) => {
-      this.isLoggedIn = isLoggedIn;
-      if (isLoggedIn) {
-        const account = this.authService.getAccount();
-        this.userName = account?.name || 'User';
-      }
-    });
   }
 
   login(): void {
-    this.authService.login();
   }
 
   logout(): void {
-    this.authService.logout();
   }
 }

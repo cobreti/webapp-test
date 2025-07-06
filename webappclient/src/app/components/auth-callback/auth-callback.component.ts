@@ -51,15 +51,5 @@ export class AuthCallbackComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Process the authentication callback
-    // this.authService.handleCallback().subscribe(success => {
-    //   if (success) {
-    //     console.log('User successfully authenticated');
-    //     // this.router.navigate(['/']);
-    //   } else {
-    //     console.error('Authentication callback failed');
-    //     // this.router.navigate(['/login']);
-    //   }
-    // });
   }
 }

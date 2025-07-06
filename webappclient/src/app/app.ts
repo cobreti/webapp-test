@@ -18,9 +18,5 @@ export class App implements OnInit {
   private authService = inject(AuthService);
 
   ngOnInit(): void {
-    this.isLoggedIn = this.authService.isLoggedIn();
-    this.authService.authChanged$.subscribe((loggedIn: boolean) => {
-      this.isLoggedIn = loggedIn;
-    });
   }
 }

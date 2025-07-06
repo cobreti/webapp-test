@@ -35,8 +35,8 @@ jobs:
           
       - name: Build Angular app
         env:
-          AZURE_CLIENT_ID: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C3EAE5E89D1A4DDEA32E7E664AC2FD46 }}
-          AZURE_TENANT_ID: ${{ secrets.AZUREAPPSERVICE_TENANTID_76BC9A9C2DD240319BB45A912B13F8D6 }}
+          AZURE_CLIENT_ID: ${{ secrets.WEBAPP_CLIENTID }}
+          AZURE_TENANT_ID: ${{ secrets.WEBAPP_TENANTID }}
         run: |
           cd webappclient
           
